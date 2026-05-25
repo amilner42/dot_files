@@ -1,0 +1,11 @@
+inherits = "catppuccin_mocha"
+
+# Active buffer tab: bright purple chip with dark text — unmissable.
+"ui.bufferline.active" = { fg = "base", bg = "peach", modifiers = ["bold"] }
+
+# Inactive tabs: dimmed but readable on a clearly-separated bar.
+"ui.bufferline" = { fg = "overlay1", bg = "mantle" }
+
+# Bar background (empty space to the right of tabs) — match inactive so the
+# active tab pops off a uniform strip.
+"ui.bufferline.background" = { bg = "mantle" }

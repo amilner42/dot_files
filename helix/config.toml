@@ -1,0 +1,17 @@
+theme = "catppuccin_mocha"
+
+[editor]
+bufferline = "multiple"
+
+[editor.indent-guides]
+render = true
+
+[keys.normal.g]
+j = "goto_next_change"
+k = "goto_prev_change"
+
+[keys.normal.space]
+Y = ":pipe-to pbcopy"
+P = ":sh printf '%%s' '%{buffer_name}' | pbcopy"
+f = "file_picker_in_current_directory"
+F = "no_op"

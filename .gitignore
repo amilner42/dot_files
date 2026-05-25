@@ -1,0 +1,8 @@
+# OS / editor cruft
+.DS_Store
+
+# Yazi flavors are installed via git clone from yazi-rs/flavors —
+# don't vendor them in the dotfiles. Re-install with:
+#   git clone --depth 1 https://github.com/yazi-rs/flavors.git tmp \
+#     && mv tmp/catppuccin-mocha.yazi yazi/flavors/ && rm -rf tmp
+yazi/flavors/

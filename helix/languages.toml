@@ -1,0 +1,3 @@
+[language-server.elixir-ls]
+command = "elixir-ls"
+timeout = 120
