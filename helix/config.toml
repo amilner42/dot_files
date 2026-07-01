@@ -2,6 +2,7 @@ theme = "catppuccin_mocha"
 
 [editor]
 bufferline = "multiple"
+rulers = [110]
 
 [editor.indent-guides]
 render = true
@@ -12,6 +13,12 @@ k = "goto_prev_change"
 
 [keys.normal.space]
 Y = ":pipe-to pbcopy"
-P = ":sh printf '%%s' '%{buffer_name}' | pbcopy"
 f = "file_picker_in_current_directory"
 F = "no_op"
+
+[keys.normal.space.c]
+a = ":sh gh browse '%{buffer_name}:%{cursor_line}'"
+d = ":sh printf '%%s' '%{buffer_name}' | pbcopy"
+f = ":sh printf '%%s' '%{buffer_name}:%{cursor_line}' | pbcopy"
+j = ":pipe-to hx-claude-prompt '%{buffer_name}:%{cursor_line}'"
+k = ":pipe-to hx-claude-prompt '%{buffer_name}:%{cursor_line}' --send"
