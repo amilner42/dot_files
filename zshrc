@@ -8,24 +8,24 @@ export VISUAL=hx
 alias f='yazi'
 alias sourcebash='source ~/.zshrc'
 alias hxbash='hx ~/.zshrc'
-alias cdd='cd ~/Desktop/programming/git/fluency_track'
-alias cdgit='cd ~/Desktop/programming/git'
-alias cdverb='cd ~/Desktop/programming/git/verb_map'
-alias cd.ave.server='cd ~/Desktop/programming/git/aveline-ai/aveline'
-alias cd.ave.cli='cd ~/Desktop/programming/git/aveline-ai/cli'
-alias cd.ave.landing='cd ~/Desktop/programming/git/aveline-ai/landing'
-alias cd.oskol='cd ~/Desktop/programming/git/oskol'
-alias cd.oskol.worktrees='cd ~/Desktop/programming/git/worktrees/oskol'
+alias cdd='cd ~/code/fluency_track'
+alias cdgit='cd ~/code'
+alias cdverb='cd ~/code/verb_map'
+alias cd.ave.server='cd ~/code/aveline-ai/aveline'
+alias cd.ave.cli='cd ~/code/aveline-ai/cli'
+alias cd.ave.landing='cd ~/code/aveline-ai/landing'
+alias cd.oskol='cd ~/code/oskol'
+alias cd.oskol.worktrees='cd ~/code/worktrees/oskol'
 alias cd.oskol.tree1='cd.oskol.worktrees; cd tree1;'
 alias cd.oskol.tree2='cd.oskol.worktrees; cd tree2;'
 alias cd.oskol.tree3='cd.oskol.worktrees; cd tree3;'
 alias cd.oskol.tree4='cd.oskol.worktrees; cd tree4;'
 alias cd.oskol.tree5='cd.oskol.worktrees; cd tree5;'
 
-alias cd4='cd ~/Desktop/programming/git/idea-400cals'
-alias cd4s='cd ~/Desktop/programming/git/idea-400cals/400cals'
-alias cd4c='cd ~/Desktop/programming/git/idea-400cals/400cals-client'
-alias cd4l='cd ~/Desktop/programming/git/idea-400cals/400cals-landing'
+alias cd4='cd ~/code/idea-400cals'
+alias cd4s='cd ~/code/idea-400cals/400cals'
+alias cd4c='cd ~/code/idea-400cals/400cals-client'
+alias cd4l='cd ~/code/idea-400cals/400cals-landing'
 
 ###
 # Git
@@ -139,17 +139,17 @@ tmux_oskol() {
   tmux kill-session -t $session_name 2>/dev/null
 
   # Create new session with first window for main oskol directory
-  tmux new-session -d -s $session_name -n "oskol" -c $HOME/Desktop/programming/git/oskol
+  tmux new-session -d -s $session_name -n "oskol" -c $HOME/code/oskol
 
   # Create windows for each worktree (using -d to avoid switching to them)
-  tmux new-window -d -t $session_name: -n "tree1" -c $HOME/Desktop/programming/git/worktrees/oskol/tree1
-  tmux new-window -d -t $session_name: -n "tree2" -c $HOME/Desktop/programming/git/worktrees/oskol/tree2
-  tmux new-window -d -t $session_name: -n "tree3" -c $HOME/Desktop/programming/git/worktrees/oskol/tree3
-  tmux new-window -d -t $session_name: -n "tree4" -c $HOME/Desktop/programming/git/worktrees/oskol/tree4
-  tmux new-window -d -t $session_name: -n "tree5" -c $HOME/Desktop/programming/git/worktrees/oskol/tree5
+  tmux new-window -d -t $session_name: -n "tree1" -c $HOME/code/worktrees/oskol/tree1
+  tmux new-window -d -t $session_name: -n "tree2" -c $HOME/code/worktrees/oskol/tree2
+  tmux new-window -d -t $session_name: -n "tree3" -c $HOME/code/worktrees/oskol/tree3
+  tmux new-window -d -t $session_name: -n "tree4" -c $HOME/code/worktrees/oskol/tree4
+  tmux new-window -d -t $session_name: -n "tree5" -c $HOME/code/worktrees/oskol/tree5
 
   # Create window for claudette
-  tmux new-window -d -t $session_name: -n "claudette" -c $HOME/Desktop/programming/git/claudette
+  tmux new-window -d -t $session_name: -n "claudette" -c $HOME/code/claudette
 
   # Select first window
   tmux select-window -t $session_name:0
