@@ -1,0 +1,19 @@
+format = """$git_branch$time$directory$character"""
+add_newline = false
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "dimmed bold purple"
+
+[time]
+disabled = false
+format="[$time]($style) "
+use_12hr = true
+style = "dimmed bold yellow"
+
+[character]
+error_symbol="[λ](bold red)"
+success_symbol="[λ](bold green)"
+
+[directory]
+style = "dimmed bold cyan"

@@ -1,0 +1,11 @@
+[user]
+	name = Arie Milner
+	email = amilner42@gmail.com
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[core]
+	pager = less -F -X
+[pager]
+	diff = less -FRX

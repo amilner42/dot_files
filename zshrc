@@ -1,5 +1,3 @@
-cdgit='cd ~/Desktop/programming/git'
-
 # Per-project Helix + ElixirLS setup helper (provides `setup-elixir-ls`)
 source ~/.config/zsh/elixir-ls.sh
 
@@ -11,21 +9,23 @@ alias f='yazi'
 alias sourcebash='source ~/.zshrc'
 alias hxbash='hx ~/.zshrc'
 alias cdd='cd ~/Desktop/programming/git/fluency_track'
+alias cdgit='cd ~/Desktop/programming/git'
 alias cdverb='cd ~/Desktop/programming/git/verb_map'
-alias cd.ave.api='cd ~/Desktop/programming/git/aveline'
-alias cd.ave.client='cd ~/Desktop/programming/git/aveline-client'
+alias cd.ave.server='cd ~/Desktop/programming/git/aveline-ai/aveline'
+alias cd.ave.cli='cd ~/Desktop/programming/git/aveline-ai/cli'
+alias cd.ave.landing='cd ~/Desktop/programming/git/aveline-ai/landing'
 alias cd.oskol='cd ~/Desktop/programming/git/oskol'
-alias cd.oskol.worktrees='cd /Users/amilner42/Desktop/programming/git/worktrees/oskol'
+alias cd.oskol.worktrees='cd ~/Desktop/programming/git/worktrees/oskol'
 alias cd.oskol.tree1='cd.oskol.worktrees; cd tree1;'
 alias cd.oskol.tree2='cd.oskol.worktrees; cd tree2;'
 alias cd.oskol.tree3='cd.oskol.worktrees; cd tree3;'
 alias cd.oskol.tree4='cd.oskol.worktrees; cd tree4;'
 alias cd.oskol.tree5='cd.oskol.worktrees; cd tree5;'
 
-alias cd4='cd /Users/amilner42/Desktop/programming/git/idea-400cals'
-alias cd4s='cd /Users/amilner42/Desktop/programming/git/idea-400cals/400cals'
-alias cd4c='cd /Users/amilner42/Desktop/programming/git/idea-400cals/400cals-client'
-alias cd4l='cd /Users/amilner42/Desktop/programming/git/idea-400cals/400cals-landing'
+alias cd4='cd ~/Desktop/programming/git/idea-400cals'
+alias cd4s='cd ~/Desktop/programming/git/idea-400cals/400cals'
+alias cd4c='cd ~/Desktop/programming/git/idea-400cals/400cals-client'
+alias cd4l='cd ~/Desktop/programming/git/idea-400cals/400cals-landing'
 
 ###
 # Git
@@ -139,17 +139,17 @@ tmux_oskol() {
   tmux kill-session -t $session_name 2>/dev/null
 
   # Create new session with first window for main oskol directory
-  tmux new-session -d -s $session_name -n "oskol" -c /Users/amilner42/Desktop/programming/git/oskol
+  tmux new-session -d -s $session_name -n "oskol" -c $HOME/Desktop/programming/git/oskol
 
   # Create windows for each worktree (using -d to avoid switching to them)
-  tmux new-window -d -t $session_name: -n "tree1" -c /Users/amilner42/Desktop/programming/git/worktrees/oskol/tree1
-  tmux new-window -d -t $session_name: -n "tree2" -c /Users/amilner42/Desktop/programming/git/worktrees/oskol/tree2
-  tmux new-window -d -t $session_name: -n "tree3" -c /Users/amilner42/Desktop/programming/git/worktrees/oskol/tree3
-  tmux new-window -d -t $session_name: -n "tree4" -c /Users/amilner42/Desktop/programming/git/worktrees/oskol/tree4
-  tmux new-window -d -t $session_name: -n "tree5" -c /Users/amilner42/Desktop/programming/git/worktrees/oskol/tree5
+  tmux new-window -d -t $session_name: -n "tree1" -c $HOME/Desktop/programming/git/worktrees/oskol/tree1
+  tmux new-window -d -t $session_name: -n "tree2" -c $HOME/Desktop/programming/git/worktrees/oskol/tree2
+  tmux new-window -d -t $session_name: -n "tree3" -c $HOME/Desktop/programming/git/worktrees/oskol/tree3
+  tmux new-window -d -t $session_name: -n "tree4" -c $HOME/Desktop/programming/git/worktrees/oskol/tree4
+  tmux new-window -d -t $session_name: -n "tree5" -c $HOME/Desktop/programming/git/worktrees/oskol/tree5
 
   # Create window for claudette
-  tmux new-window -d -t $session_name: -n "claudette" -c /Users/amilner42/Desktop/programming/git/claudette
+  tmux new-window -d -t $session_name: -n "claudette" -c $HOME/Desktop/programming/git/claudette
 
   # Select first window
   tmux select-window -t $session_name:0
@@ -178,16 +178,11 @@ alias mix.s.4002='PORT=4002 mix phx.server'
 alias mix.s.4003='PORT=4003 mix phx.server'
 alias mix.s.4004='PORT=4004 mix phx.server'
 
-### ASDF
- . /usr/local/opt/asdf/libexec/asdf.sh
+### ASDF (manages erlang, elixir, nodejs via .tool-versions)
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-### NVM
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-export PATH="/usr/local/opt/postgresql@17/bin:$PATH"
+### Postgres (brew keg-only formula)
+[[ -d "$HOMEBREW_PREFIX/opt/postgresql@17/bin" ]] && export PATH="$HOMEBREW_PREFIX/opt/postgresql@17/bin:$PATH"
 
 ### Starship
 eval "$(starship init zsh)"

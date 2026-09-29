@@ -6,47 +6,46 @@ Personal config for terminal-first workflow on macOS.
 
 | Path                | Lives at                  | Purpose                            |
 |---------------------|---------------------------|------------------------------------|
+| `zshrc`             | `~/.zshrc`                | Shell config                       |
+| `zsh/`              | `~/.config/zsh/`          | `setup-elixir-ls` helper function  |
+| `git/`              | `~/.config/git/`          | Git config + global ignore         |
 | `helix/`            | `~/.config/helix/`        | Helix editor config + theme        |
 | `ghostty/`          | `~/.config/ghostty/`      | Ghostty terminal config            |
 | `yazi/`             | `~/.config/yazi/`         | Yazi file-manager config + theme   |
-| `zsh/elixir-ls.sh`  | `~/.config/zsh/`          | `setup-elixir-ls` helper function  |
+| `starship.toml`     | `~/.config/starship.toml` | Prompt                             |
 | `tmux.conf`         | `~/.tmux.conf`            | Tmux config                        |
-| `zshrc`             | `~/.zshrc`                | Shell config                       |
+
+Machine-specific or secret config goes in `~/.zshrc.local` (not committed).
 
 ## Install on a fresh machine
 
+Assumes Homebrew is installed and `brew shellenv` is in `~/.zprofile`.
+
 ```sh
-# 1. Clone
-git clone git@github.com:amilner42/dotfiles.git ~/dotfiles
+# 1. Tools
+brew install git gh helix yazi tmux asdf starship gitui
+brew install --cask ghostty font-jetbrains-mono-nerd-font
 
-# 2. Symlink (replace any existing files — back them up first if you care)
-ln -sf ~/dotfiles/helix      ~/.config/helix
-ln -sf ~/dotfiles/ghostty    ~/.config/ghostty
-ln -sf ~/dotfiles/yazi       ~/.config/yazi
-ln -sf ~/dotfiles/zsh        ~/.config/zsh
-ln -sf ~/dotfiles/tmux.conf  ~/.tmux.conf
-ln -sf ~/dotfiles/zshrc      ~/.zshrc
+# 2. Clone
+gh repo clone amilner42/dot_files ~/dotfiles
 
-# 3. Install yazi theme (gitignored — installed per machine)
-mkdir -p ~/.config/yazi/flavors
+# 3. Symlink
+mkdir -p ~/.config
+for d in zsh git helix ghostty yazi; do ln -sfn ~/dotfiles/$d ~/.config/$d; done
+ln -sf ~/dotfiles/starship.toml ~/.config/starship.toml
+ln -sf ~/dotfiles/tmux.conf     ~/.tmux.conf
+ln -sf ~/dotfiles/zshrc         ~/.zshrc
+
+# 4. Yazi theme (gitignored, installed per machine)
 git clone --depth 1 https://github.com/yazi-rs/flavors.git /tmp/yazi-flavors \
-  && mv /tmp/yazi-flavors/catppuccin-mocha.yazi ~/.config/yazi/flavors/ \
+  && mkdir -p ~/dotfiles/yazi/flavors \
+  && mv /tmp/yazi-flavors/catppuccin-mocha.yazi ~/dotfiles/yazi/flavors/ \
   && rm -rf /tmp/yazi-flavors
 
-source ~/.zshrc
+exec zsh
 ```
 
-## Tools assumed installed
-
-- [Helix](https://helix-editor.com/) — `brew install helix`
-- [Ghostty](https://ghostty.org/) — `brew install --cask ghostty`
-- [Yazi](https://yazi-rs.github.io/) — `brew install yazi`
-- [Tmux](https://github.com/tmux/tmux) — `brew install tmux`
-- [asdf](https://asdf-vm.com/) — `brew install asdf`
-- [JetBrains Mono Nerd Font](https://www.nerdfonts.com/) —
-  `brew install --cask font-jetbrains-mono-nerd-font`
-- [GitHub CLI](https://cli.github.com/) — `brew install gh`
-- [Yazi](https://yazi-rs.github.io/), [Gitui](https://github.com/extrawurst/gitui)
+Move any existing `~/.config/<dir>` out of the way first, or `ln` nests the link inside it.
 
 ## Notes for future-me
 
